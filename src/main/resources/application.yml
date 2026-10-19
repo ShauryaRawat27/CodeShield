@@ -1,0 +1,78 @@
+spring:
+  application:
+    name: codeshield
+  datasource:
+    url: jdbc:h2:file:./data/codeshield;AUTO_SERVER=TRUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  thymeleaf:
+    cache: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 3MB
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always
+
+logging:
+  level:
+    org.hibernate.SQL: warn
+
+codeshield:
+  logs:
+    maximum-content-bytes: ${CODESHIELD_LOG_MAX_BYTES:2000000}
+    maximum-lines: ${CODESHIELD_LOG_MAX_LINES:20000}
+    authentication-failure-threshold: ${CODESHIELD_LOG_AUTH_FAILURE_THRESHOLD:5}
+    sensitive-path-threshold: ${CODESHIELD_LOG_SENSITIVE_PATH_THRESHOLD:3}
+    server-error-threshold: ${CODESHIELD_LOG_SERVER_ERROR_THRESHOLD:10}
+  repository:
+    maximum-file-size-bytes: ${CODESHIELD_REPOSITORY_MAX_FILE_SIZE:1000000}
+    maximum-search-depth: ${CODESHIELD_REPOSITORY_MAX_DEPTH:6}
+    clone-depth: ${CODESHIELD_GIT_CLONE_DEPTH:1}
+    clone-timeout-seconds: ${CODESHIELD_GIT_TIMEOUT_SECONDS:60}
+    ignored-directories:
+      - .git
+      - .idea
+      - .m2
+      - node_modules
+      - target
+      - build
+      - .gradle
+    database-ports:
+      - "1433"
+      - "3306"
+      - "5432"
+      - "6379"
+      - "27017"
+  rules:
+    runtime-version-base-risk: ${CODESHIELD_RISK_RUNTIME:30}
+    public-database-base-risk: ${CODESHIELD_RISK_PUBLIC_DATABASE:52}
+    unexpected-root-user-base-risk: ${CODESHIELD_RISK_ROOT_USER:42}
+    unexpected-user-base-risk: ${CODESHIELD_RISK_UNEXPECTED_USER:25}
+    docker-socket-base-risk: ${CODESHIELD_RISK_DOCKER_SOCKET:58}
+    image-digest-base-risk: ${CODESHIELD_RISK_IMAGE_DIGEST:38}
+    dependency-known-exploited-base-risk: ${CODESHIELD_RISK_DEPENDENCY_EXPLOITED:48}
+    dependency-other-base-risk: ${CODESHIELD_RISK_DEPENDENCY_OTHER:24}
+  risk:
+    low-criticality-weight: ${CODESHIELD_WEIGHT_LOW:0}
+    medium-criticality-weight: ${CODESHIELD_WEIGHT_MEDIUM:8}
+    high-criticality-weight: ${CODESHIELD_WEIGHT_HIGH:15}
+    critical-criticality-weight: ${CODESHIELD_WEIGHT_CRITICAL:22}
+    internet-facing-weight: ${CODESHIELD_WEIGHT_INTERNET_FACING:15}
+    known-exploited-weight: ${CODESHIELD_WEIGHT_KNOWN_EXPLOITED:18}
+    maximum-score: ${CODESHIELD_MAXIMUM_SCORE:100}
+    medium-threshold: ${CODESHIELD_THRESHOLD_MEDIUM:40}
+    high-threshold: ${CODESHIELD_THRESHOLD_HIGH:65}
+    critical-threshold: ${CODESHIELD_THRESHOLD_CRITICAL:85}

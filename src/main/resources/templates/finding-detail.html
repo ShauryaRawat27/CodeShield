@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Finding Detail')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('findings')}"></nav>
+
+<main class="page-shell narrow-shell">
+    <div class="flash" th:if="${message}" th:text="${message}"></div>
+    <a class="back-link" th:href="@{/findings}">← Back to findings</a>
+
+    <section class="finding-hero">
+        <div>
+            <div class="finding-tags">
+                <span class="severity-badge" th:classappend="${#strings.toLowerCase(finding.severity.name())}" th:text="${finding.severity}">CRITICAL</span>
+                <span class="status-badge" th:text="${finding.status}">OPEN</span>
+                <span class="rule-tag" th:text="${finding.ruleId}">CS-RULE</span>
+            </div>
+            <h1 th:text="${finding.title}">Finding title</h1>
+            <p th:text="${finding.description}">Description</p>
+            <small th:text="${finding.asset.name + ' · Scan #' + finding.scanRun.id}">Application</small>
+        </div>
+        <div class="risk-meter">
+            <span>Risk score</span>
+            <strong th:text="${finding.riskScore}">92</strong>
+            <div class="meter-track"><span th:style="'width:' + ${finding.riskScore} + '%'" th:classappend="${#strings.toLowerCase(finding.severity.name())}"></span></div>
+            <small>Context adjusted out of 100</small>
+        </div>
+    </section>
+
+    <section class="comparison-grid">
+        <article class="state-card expected">
+            <span>EXPECTED STATE</span>
+            <h2>Application intent</h2>
+            <p th:text="${finding.expectedState}">Expected</p>
+        </article>
+        <article class="state-card observed">
+            <span>OBSERVED STATE</span>
+            <h2>Runtime reality</h2>
+            <p th:text="${finding.observedState}">Observed</p>
+        </article>
+    </section>
+
+    <section class="detail-grid">
+        <article class="panel">
+            <span class="eyebrow">SUPPORTING EVIDENCE</span>
+            <h2>Why CodeShield raised this finding</h2>
+            <p th:text="${finding.evidence}">Evidence</p>
+        </article>
+        <article class="panel remediation-panel">
+            <span class="eyebrow">RECOMMENDED ACTION</span>
+            <h2>How to correct the drift</h2>
+            <p th:text="${finding.remediation}">Remediation</p>
+        </article>
+    </section>
+
+    <section class="panel workflow-panel">
+        <div>
+            <span class="eyebrow">WORKFLOW</span>
+            <h2>Update finding status</h2>
+            <p>Resolve after remediation, accept when an approved exception exists, or reopen for further work.</p>
+        </div>
+        <form th:action="@{/findings/{id}/status(id=${finding.id})}" method="post" class="status-form">
+            <select name="status">
+                <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}" th:selected="${status == finding.status}"></option>
+            </select>
+            <button class="button primary" type="submit">Save status</button>
+        </form>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Log Analysis')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('logs')}"></nav>
+
+<main class="page-shell narrow-shell">
+    <header class="page-header split-header">
+        <div>
+            <span class="eyebrow">EVENT TRIAGE</span>
+            <h1>Analyze application logs</h1>
+            <p>Paste or upload a real log window. CodeShield groups repeated events and creates a small set of explainable security signals.</p>
+        </div>
+        <a class="button secondary" th:href="@{/scans/repository}">Scan a repository</a>
+    </header>
+
+    <section class="panel repository-summary">
+        <h2>Signals checked in this MVP</h2>
+        <div class="evidence-chip-row">
+            <span>Login failures</span>
+            <span>Success after failures</span>
+            <span>Privileged activity</span>
+            <span>Docker access</span>
+            <span>Sensitive paths</span>
+            <span>Server errors</span>
+        </div>
+        <p>The detector uses transparent pattern and threshold rules. It groups repeated matches into findings instead of creating one alert for every line.</p>
+    </section>
+
+    <section class="panel empty-state" th:if="${#lists.isEmpty(assets)}">
+        <h2>No application baseline is registered</h2>
+        <p>Register an application first so the detected signals can be prioritized using its criticality.</p>
+        <a class="button primary" th:href="@{/assets}">Register an application</a>
+    </section>
+
+    <form th:unless="${#lists.isEmpty(assets)}" th:action="@{/logs}" th:object="${logAnalysisRequest}"
+          method="post" enctype="multipart/form-data" class="panel scan-form repository-form">
+        <div class="form-alert" th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.globalErrors()}" th:text="${error}"></div>
+
+        <div class="form-section">
+            <div class="section-number">1</div>
+            <div class="section-copy">
+                <h2>Select the application</h2>
+                <p>Application criticality and exposure context are used to prioritize each detected signal.</p>
+            </div>
+            <div class="form-grid span-2">
+                <label class="field">Application baseline
+                    <select th:field="*{assetId}">
+                        <option th:each="asset : ${assets}" th:value="${asset.id}" th:text="${asset.name + ' · ' + asset.criticality}"></option>
+                    </select>
+                    <small class="field-error" th:errors="*{assetId}"></small>
+                </label>
+                <label class="toggle-card compact-toggle">
+                    <input type="checkbox" th:field="*{internetFacing}">
+                    <span><strong>Internet facing</strong><small>Raise the priority when the service is publicly reachable</small></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="section-number">2</div>
+            <div class="section-copy">
+                <h2>Provide a log window</h2>
+                <p>Paste text, choose a supported file, or use both. Each submission is analyzed independently.</p>
+            </div>
+            <div class="log-input-grid span-2">
+                <label class="field">Paste log text
+                    <textarea class="log-textarea" th:field="*{logText}" rows="12"
+                              placeholder="2026-10-15T10:21:02Z WARN Authentication failed for user alice"></textarea>
+                </label>
+                <label class="field upload-field">Upload a text log
+                    <input type="file" name="logFile" accept=".log,.txt,.csv,.json,.jsonl,text/plain,application/json">
+                    <small class="field-help">Accepted: .log, .txt, .csv, .json, and .jsonl. Maximum <span th:text="${maximumMegabytes}">2.0</span> MB and <span th:text="${maximumLines}">20000</span> lines combined.</small>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <a class="button secondary" th:href="@{/}">Cancel</a>
+            <button class="button primary" type="submit">Analyze logs</button>
+        </div>
+    </form>
+
+    <section class="scope-note">
+        <strong>Privacy and scope</strong>
+        <p>Raw log files are not stored. CodeShield saves only aggregate counts and one short redacted example for each signal. This MVP performs rule-based triage; it does not replace a full SIEM or prove that an event is an attack.</p>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

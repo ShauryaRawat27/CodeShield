@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Scan History')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('history')}"></nav>
+
+<main class="page-shell">
+    <header class="page-header split-header">
+        <div>
+            <span class="eyebrow">AUDIT TRAIL</span>
+            <h1>Scan history</h1>
+            <p>Completed evidence comparisons remain available as an audit record.</p>
+        </div>
+        <a class="button primary" th:href="@{/scans/new}">New scan</a>
+    </header>
+
+    <section class="history-grid">
+        <article class="scan-history-card" th:each="scan : ${scans}">
+            <div class="scan-history-top">
+                <span class="scan-icon">✓</span>
+                <span class="status-badge" th:text="${scan.status}">COMPLETED</span>
+            </div>
+            <h2 th:text="${scan.asset.name}">Application</h2>
+            <p th:text="${'Scan #' + scan.id + ' · ' + (scan.completedAt != null ? #temporals.format(scan.completedAt, 'dd MMM yyyy, HH:mm') : 'In progress')}">Scan</p>
+            <small class="source-reference" th:text="${scan.sourceReference != null ? scan.sourceReference : 'Evidence source unavailable'}">Evidence source</small>
+            <div class="scan-metrics">
+                <div><span>Findings</span><strong th:text="${scan.findingsCount}">6</strong></div>
+                <div><span>Max risk</span><strong th:text="${scan.maximumRiskScore}">100</strong></div>
+            </div>
+        </article>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

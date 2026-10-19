@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Findings')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('findings')}"></nav>
+
+<main class="page-shell">
+    <header class="page-header split-header">
+        <div>
+            <span class="eyebrow">EVIDENCE LINKED RESULTS</span>
+            <h1>Security findings</h1>
+            <p>Each finding shows the expected state, observed state, risk context, evidence, and corrective action.</p>
+        </div>
+        <a class="button primary" th:href="@{/scans/new}">Run another scan</a>
+    </header>
+
+    <div class="flash" th:if="${message}" th:text="${message}"></div>
+
+    <div class="filter-row">
+        <a th:href="@{/findings}" th:classappend="${selectedStatus == null} ? 'active'">All</a>
+        <a th:each="status : ${statuses}"
+           th:href="@{/findings(status=${status})}"
+           th:text="${status}"
+           th:classappend="${selectedStatus == status} ? 'active'">OPEN</a>
+    </div>
+
+    <section class="panel table-panel">
+        <div class="empty-state" th:if="${#lists.isEmpty(findings)}">
+            <h2>No findings match this filter</h2>
+            <p>Run a repository scan or submit runtime evidence to create findings.</p>
+        </div>
+        <div class="responsive-table" th:unless="${#lists.isEmpty(findings)}">
+            <table>
+                <thead>
+                <tr>
+                    <th>Severity</th>
+                    <th>Finding</th>
+                    <th>Application</th>
+                    <th>Status</th>
+                    <th>Score</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="finding : ${findings}">
+                    <td><span class="severity-badge" th:classappend="${#strings.toLowerCase(finding.severity.name())}" th:text="${finding.severity}">HIGH</span></td>
+                    <td>
+                        <strong th:text="${finding.title}">Finding title</strong>
+                        <small th:text="${finding.ruleId}">CS-RULE</small>
+                    </td>
+                    <td th:text="${finding.asset.name}">Application</td>
+                    <td><span class="status-badge" th:text="${finding.status}">OPEN</span></td>
+                    <td><span class="score strong" th:text="${finding.riskScore}">87</span></td>
+                    <td><a th:href="@{/findings/{id}(id=${finding.id})}">Review →</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

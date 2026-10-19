@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('New Scan')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('scan')}"></nav>
+
+<main class="page-shell narrow-shell">
+    <header class="page-header split-header">
+        <div>
+            <span class="eyebrow">RUNTIME REALITY</span>
+            <h1>Run a drift scan</h1>
+            <p>Enter the observed runtime state. CodeShield will compare it with the selected application baseline.</p>
+        </div>
+        <div class="preset-links">
+            <a th:href="@{/scans/repository}">Scan a repository</a>
+            <a th:href="@{/logs}">Analyze logs</a>
+        </div>
+    </header>
+
+    <section class="panel empty-state" th:if="${#lists.isEmpty(assets)}">
+        <h2>No application baseline is registered</h2>
+        <p>Register the approved configuration of an application before submitting runtime evidence.</p>
+        <a class="button primary" th:href="@{/assets}">Register an application</a>
+    </section>
+
+    <form th:unless="${#lists.isEmpty(assets)}" th:action="@{/scans}" th:object="${scanRequest}" method="post" class="panel scan-form">
+        <div class="form-section">
+            <div class="section-number">1</div>
+            <div class="section-copy">
+                <h2>Select the application</h2>
+                <p>The saved baseline represents the application's intended secure state.</p>
+            </div>
+            <label class="field span-2">Application baseline
+                <select th:field="*{assetId}">
+                    <option th:each="asset : ${assets}" th:value="${asset.id}" th:text="${asset.name + ' · ' + asset.criticality}"></option>
+                </select>
+                <small class="field-error" th:errors="*{assetId}"></small>
+            </label>
+        </div>
+
+        <div class="form-section">
+            <div class="section-number">2</div>
+            <div class="section-copy">
+                <h2>Observed runtime evidence</h2>
+                <p>These values represent evidence returned by Docker, a host agent, or a dependency inventory.</p>
+            </div>
+            <div class="form-grid span-2">
+                <label class="field">Observed Java version
+                    <input type="text" th:field="*{javaVersion}">
+                    <small class="field-error" th:errors="*{javaVersion}"></small>
+                </label>
+                <label class="field">Database exposure
+                    <select th:field="*{databaseExposure}">
+                        <option th:each="value : ${exposures}" th:value="${value}" th:text="${value}"></option>
+                    </select>
+                </label>
+                <label class="field">Container user
+                    <input type="text" th:field="*{containerUser}">
+                    <small class="field-error" th:errors="*{containerUser}"></small>
+                </label>
+                <label class="field">Observed dependency version
+                    <input type="text" th:field="*{dependencyVersion}">
+                    <small class="field-error" th:errors="*{dependencyVersion}"></small>
+                </label>
+                <label class="field span-2">Running image digest
+                    <input type="text" th:field="*{imageDigest}">
+                    <small class="field-error" th:errors="*{imageDigest}"></small>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="section-number">3</div>
+            <div class="section-copy">
+                <h2>Exposure and exploit context</h2>
+                <p>Context raises or lowers priority without changing the underlying drift evidence.</p>
+            </div>
+            <div class="toggle-grid span-2">
+                <label class="toggle-card">
+                    <input type="checkbox" th:field="*{dockerSocketMounted}">
+                    <span><strong>Docker socket mounted</strong><small>Container may control the host Docker daemon</small></span>
+                </label>
+                <label class="toggle-card">
+                    <input type="checkbox" th:field="*{internetFacing}">
+                    <span><strong>Internet facing</strong><small>Observed service is reachable outside its private network</small></span>
+                </label>
+                <label class="toggle-card">
+                    <input type="checkbox" th:field="*{knownExploited}">
+                    <span><strong>Known exploit evidence</strong><small>Observed dependency has active exploitation evidence</small></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <a class="button secondary" th:href="@{/}">Cancel</a>
+            <button class="button primary" type="submit">Analyze security drift</button>
+        </div>
+    </form>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

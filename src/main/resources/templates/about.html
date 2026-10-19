@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('About')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('about')}"></nav>
+
+<main class="page-shell narrow-shell">
+    <header class="page-header">
+        <div>
+            <span class="eyebrow">SYSTEM OVERVIEW</span>
+            <h1>How CodeShield works</h1>
+            <p>CodeShield is a context-aware security drift platform that analyzes repository configuration and runtime evidence.</p>
+        </div>
+    </header>
+
+    <section class="about-intro panel">
+        <h2>The idea in one sentence</h2>
+        <p>CodeShield compares what an application is supposed to use with what its deployed environment actually exposes and executes.</p>
+    </section>
+
+    <section class="architecture-flow">
+        <article>
+            <span class="step-number">01</span>
+            <h2>Application intent</h2>
+            <p>Saved baselines describe approved runtime versions, image digests, dependency versions, users, and network exposure.</p>
+        </article>
+        <div class="architecture-arrow">→</div>
+        <article>
+            <span class="step-number">02</span>
+            <h2>Runtime evidence</h2>
+            <p>A scan reads repository configuration, accepts runtime observations, or triages an uploaded application log window.</p>
+        </article>
+        <div class="architecture-arrow">→</div>
+        <article>
+            <span class="step-number">03</span>
+            <h2>Drift engine</h2>
+            <p>Deterministic rules compare both states and preserve the evidence behind every detected mismatch.</p>
+        </article>
+        <div class="architecture-arrow">→</div>
+        <article>
+            <span class="step-number">04</span>
+            <h2>Risk and response</h2>
+            <p>Criticality, Internet exposure, and exploit evidence adjust priority. Users then resolve, accept, or reopen findings.</p>
+        </article>
+    </section>
+
+    <section class="two-column about-columns">
+        <article class="panel">
+            <span class="eyebrow">IMPLEMENTED</span>
+            <h2>Current capabilities</h2>
+            <ul class="check-list">
+                <li>Persistent application baselines</li>
+                <li>Public Git URL and local repository configuration scans</li>
+                <li>Configurable runtime evidence scans</li>
+                <li>Six explainable drift rules</li>
+                <li>Aggregated log triage with six explainable signals</li>
+                <li>Context-aware risk scoring</li>
+                <li>Evidence and remediation detail</li>
+                <li>Finding workflow and scan history</li>
+                <li>JSON REST API and H2 database</li>
+            </ul>
+        </article>
+        <article class="panel">
+            <span class="eyebrow">FUTURE WORK</span>
+            <h2>What a production version would add</h2>
+            <ul class="check-list muted-list">
+                <li>Read-only Docker Engine collector</li>
+                <li>Authenticated host agent over mTLS</li>
+                <li>SBOM and vulnerability feed ingestion</li>
+                <li>User authentication and role-based access</li>
+                <li>Scheduled scans, alerting, and reporting</li>
+                <li>PostgreSQL and a durable work queue</li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="panel analysis-modes">
+        <div>
+            <span class="eyebrow">ANALYSIS MODES</span>
+            <h2>Use repository, runtime, or log evidence</h2>
+            <ol>
+                <li>Register the intended secure baseline for an application.</li>
+                <li>Scan a public Git URL or local repository to extract configuration evidence automatically.</li>
+                <li>Submit live observations manually or through the REST API when runtime data is available.</li>
+                <li>Paste or upload a log window to group repeated security-relevant events.</li>
+                <li>Review expected and observed states, evidence, risk, and remediation.</li>
+            </ol>
+        </div>
+        <a class="button primary" th:href="@{/scans/repository}">Scan a repository</a>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

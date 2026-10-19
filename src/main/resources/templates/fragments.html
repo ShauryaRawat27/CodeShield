@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title} + ' | CodeShield'">CodeShield</title>
+    <meta name="description" content="Context-aware application and infrastructure security drift detection">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<nav class="topbar" th:fragment="nav(active)">
+    <a class="brand" th:href="@{/}">
+        <span class="brand-mark">CS</span>
+        <span><strong>CodeShield</strong><small>Security Drift Analyzer</small></span>
+    </a>
+    <div class="nav-links">
+        <a th:href="@{/}" th:classappend="${active == 'dashboard'} ? 'active'">Dashboard</a>
+        <a th:href="@{/assets}" th:classappend="${active == 'assets'} ? 'active'">Applications</a>
+        <a th:href="@{/scans/new}" th:classappend="${active == 'scan'} ? 'active'">New Scan</a>
+        <a th:href="@{/scans/repository}" th:classappend="${active == 'repository'} ? 'active'">Repository Scan</a>
+        <a th:href="@{/logs}" th:classappend="${active == 'logs'} ? 'active'">Log Analysis</a>
+        <a th:href="@{/findings}" th:classappend="${active == 'findings'} ? 'active'">Findings</a>
+        <a th:href="@{/scans}" th:classappend="${active == 'history'} ? 'active'">History</a>
+        <a th:href="@{/about}" th:classappend="${active == 'about'} ? 'active'">About</a>
+    </div>
+</nav>
+
+<footer th:fragment="footer">
+    <span>CodeShield Security Drift Analyzer</span>
+    <span>Application intent compared with runtime reality</span>
+</footer>
+</body>
+</html>

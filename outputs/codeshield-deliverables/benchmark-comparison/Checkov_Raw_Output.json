@@ -1,0 +1,851 @@
+{
+  "check_type": "dockerfile",
+  "results": {
+    "failed_checks": [
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-032/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-032/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-032/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-032/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-089/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-089/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-089/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-089/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-098/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-098/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-098/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-098/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-128/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-128/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-128/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-128/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-140/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-140/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-140/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-140/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-038/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-038/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-038/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-038/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-009/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-009/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-009/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-009/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-068/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-068/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-068/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-068/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-104/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-104/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-104/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-104/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-080/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-080/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-080/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-080/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-012/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-012/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-012/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-012/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-122/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-122/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-122/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-122/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-062/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-062/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-062/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-062/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-050/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-050/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-050/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-050/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-044/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-044/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-044/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-044/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-110/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-110/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-110/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-110/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-074/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-074/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-074/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-074/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-134/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-134/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-134/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-134/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      },
+      {
+        "check_id": "CKV_DOCKER_8",
+        "bc_check_id": null,
+        "check_name": "Ensure the last USER is not root",
+        "check_result": {
+          "result": "FAILED",
+          "results_configuration": [
+            {
+              "instruction": "USER",
+              "startline": 3,
+              "endline": 3,
+              "content": "USER root\n",
+              "value": "root"
+            }
+          ]
+        },
+        "code_block": null,
+        "file_path": "/CSB-092/Dockerfile",
+        "file_abs_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-092/Dockerfile",
+        "repo_file_path": "/var/folders/4c/lynrms3160g_lw6jgc9_6k8c0000gn/T/codeshield-benchmark-g3bh4j3x/fixtures/CSB-092/Dockerfile",
+        "file_line_range": [
+          4,
+          4
+        ],
+        "resource": "/CSB-092/Dockerfile.USER",
+        "evaluations": null,
+        "check_class": "checkov.dockerfile.checks.RootUser",
+        "fixed_definition": null,
+        "entity_tags": null,
+        "caller_file_path": null,
+        "caller_file_line_range": null,
+        "resource_address": null,
+        "severity": null,
+        "bc_category": null,
+        "benchmarks": null,
+        "description": null,
+        "short_description": null,
+        "vulnerability_details": null,
+        "connected_node": null,
+        "guideline": null,
+        "details": [],
+        "check_len": null,
+        "definition_context_file_path": null
+      }
+    ]
+  },
+  "summary": {
+    "passed": 131,
+    "failed": 19,
+    "skipped": 0,
+    "parsing_errors": 0,
+    "resource_count": 150,
+    "checkov_version": "3.3.21"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "dataset": {
+    "cases": 150,
+    "drift_cases": 120,
+    "compliant_cases": 30,
+    "expected_findings": 232
+  },
+  "codeshield": {
+    "exact_rule_set_matches": 148,
+    "exact_rule_set_accuracy": 0.9866666666666667,
+    "binary": {
+      "tp": 120,
+      "tn": 28,
+      "fp": 2,
+      "fn": 0,
+      "accuracy": 0.9866666666666667,
+      "precision": 0.9836065573770492,
+      "recall": 1.0,
+      "f1": 0.9917355371900827
+    },
+    "rule_level": {
+      "tp": 232,
+      "tn": 666,
+      "fp": 2,
+      "fn": 0,
+      "precision": 0.9914529914529915,
+      "recall": 1.0,
+      "f1": 0.9957081545064378
+    },
+    "score_matches": 148,
+    "severity_matches": 148
+  },
+  "checkov": {
+    "version": "3.3.21",
+    "policy": "CKV_DOCKER_8",
+    "root_subcontrol": {
+      "tp": 19,
+      "tn": 131,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "container_user_drift": {
+      "tp": 19,
+      "tn": 113,
+      "fp": 0,
+      "fn": 18,
+      "accuracy": 0.88,
+      "precision": 1.0,
+      "recall": 0.5135135135135135,
+      "f1": 0.6785714285714285
+    },
+    "overall_drift_if_root_is_only_signal": {
+      "tp": 19,
+      "tn": 30,
+      "fp": 0,
+      "fn": 101,
+      "accuracy": 0.32666666666666666,
+      "precision": 1.0,
+      "recall": 0.15833333333333333,
+      "f1": 0.2733812949640288
+    },
+    "failed_cases": 19
+  }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Applications')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('assets')}"></nav>
+
+<main class="page-shell">
+    <header class="page-header">
+        <div>
+            <span class="eyebrow">APPLICATION INTENT</span>
+            <h1>Application baselines</h1>
+            <p>Define the secure state CodeShield should expect before comparing it with runtime evidence.</p>
+        </div>
+    </header>
+
+    <div class="flash" th:if="${message}" th:text="${message}"></div>
+
+    <section class="asset-grid">
+        <article class="asset-card" th:each="asset : ${assets}">
+            <div class="asset-card-top">
+                <span class="asset-icon">APP</span>
+                <span class="badge" th:text="${asset.criticality}">HIGH</span>
+            </div>
+            <h2 th:text="${asset.name}">Application</h2>
+            <p th:text="${asset.description}">Description</p>
+            <dl class="baseline-list">
+                <div><dt>Owner</dt><dd th:text="${asset.owner}">Team</dd></div>
+                <div><dt>Java</dt><dd th:text="${asset.expectedJavaVersion}">Version</dd></div>
+                <div><dt>Database</dt><dd th:text="${asset.expectedDatabaseExposure}">Exposure</dd></div>
+                <div><dt>Container user</dt><dd th:text="${asset.expectedContainerUser}">User</dd></div>
+                <div><dt>Dependency</dt><dd th:text="${asset.expectedDependencyVersion}">Version</dd></div>
+            </dl>
+            <a class="button secondary full" th:href="@{/scans/new(assetId=${asset.id})}">Scan this application</a>
+        </article>
+
+        <article class="panel create-panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="eyebrow">NEW BASELINE</span>
+                    <h2>Register an application</h2>
+                </div>
+            </div>
+            <form th:action="@{/assets}" th:object="${assetForm}" method="post" class="form-grid compact-form">
+                <label class="field span-2">Application name
+                    <input type="text" th:field="*{name}" placeholder="Inventory Service">
+                    <small class="field-error" th:errors="*{name}"></small>
+                </label>
+                <label class="field span-2">Owner
+                    <input type="text" th:field="*{owner}" placeholder="Platform Team">
+                    <small class="field-error" th:errors="*{owner}"></small>
+                </label>
+                <label class="field span-2">Description
+                    <textarea th:field="*{description}" rows="2" placeholder="What the application does"></textarea>
+                </label>
+                <label class="field">Criticality
+                    <select th:field="*{criticality}">
+                        <option th:each="value : ${criticalities}" th:value="${value}" th:text="${value}"></option>
+                    </select>
+                </label>
+                <label class="field">Expected Java
+                    <input type="text" th:field="*{expectedJavaVersion}" placeholder="Approved major version">
+                    <small class="field-error" th:errors="*{expectedJavaVersion}"></small>
+                </label>
+                <label class="field">Database exposure
+                    <select th:field="*{expectedDatabaseExposure}">
+                        <option th:each="value : ${exposures}" th:value="${value}" th:text="${value}"></option>
+                    </select>
+                </label>
+                <label class="field">Container user
+                    <input type="text" th:field="*{expectedContainerUser}" placeholder="Approved runtime account">
+                    <small class="field-error" th:errors="*{expectedContainerUser}"></small>
+                </label>
+                <label class="field span-2">Approved image digest
+                    <input type="text" th:field="*{expectedImageDigest}" placeholder="sha256 digest">
+                    <small class="field-error" th:errors="*{expectedImageDigest}"></small>
+                </label>
+                <label class="field span-2">Approved dependency version
+                    <input type="text" th:field="*{expectedDependencyVersion}" placeholder="Approved version">
+                    <small class="field-error" th:errors="*{expectedDependencyVersion}"></small>
+                </label>
+                <button class="button primary span-2" type="submit">Create baseline</button>
+            </form>
+        </article>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

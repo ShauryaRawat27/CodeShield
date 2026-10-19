@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Repository Scan')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('repository')}" ></nav>
+
+<main class="page-shell narrow-shell">
+    <header class="page-header split-header">
+        <div>
+            <span class="eyebrow">REPOSITORY EVIDENCE</span>
+            <h1>Scan a Git repository</h1>
+            <p>Paste a public HTTPS Git URL or use a local repository path, then compare its detected configuration with a registered application baseline.</p>
+        </div>
+        <a class="button secondary" th:href="@{/scans/new}">Enter evidence manually</a>
+    </header>
+
+    <section class="panel repository-summary">
+        <h2>Supported evidence</h2>
+        <div class="evidence-chip-row">
+            <span>pom.xml</span>
+            <span>build.gradle</span>
+            <span>Dockerfile</span>
+            <span>compose.yaml</span>
+        </div>
+        <p>CodeShield reads Java and Spring Boot versions, container users, image pinning, public port mappings, database exposure, and Docker socket mounts. Remote repositories are shallow-cloned to temporary storage and removed after analysis.</p>
+    </section>
+
+    <section class="panel empty-state" th:if="${#lists.isEmpty(assets)}">
+        <h2>No application baseline is registered</h2>
+        <p>Register the approved configuration of an application before scanning a repository.</p>
+        <a class="button primary" th:href="@{/assets}">Register an application</a>
+    </section>
+
+    <form th:unless="${#lists.isEmpty(assets)}" th:action="@{/scans/repository}" th:object="${repositoryScanRequest}" method="post" class="panel scan-form repository-form">
+        <div class="form-section">
+            <div class="section-number">1</div>
+            <div class="section-copy">
+                <h2>Select the baseline</h2>
+                <p>Detected repository evidence is evaluated against this application's approved state.</p>
+            </div>
+            <label class="field span-2">Application baseline
+                <select th:field="*{assetId}">
+                    <option th:each="asset : ${assets}" th:value="${asset.id}" th:text="${asset.name + ' · ' + asset.criticality}"></option>
+                </select>
+                <small class="field-error" th:errors="*{assetId}"></small>
+            </label>
+        </div>
+
+        <div class="form-section">
+            <div class="section-number">2</div>
+            <div class="section-copy">
+                <h2>Choose the repository source</h2>
+                <p>Use a public HTTPS clone URL or the absolute path of a repository already available on this machine.</p>
+            </div>
+            <label class="field span-2">Git URL or local path
+                <input type="text" th:field="*{repositorySource}" placeholder="https://github.com/owner/repository.git">
+                <small class="field-help">Private repositories requiring credentials are not accessed. Local paths must be mounted when CodeShield runs in Docker.</small>
+                <small class="field-error" th:errors="*{repositorySource}"></small>
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <a class="button secondary" th:href="@{/}">Cancel</a>
+            <button class="button primary" type="submit">Analyze repository</button>
+        </div>
+    </form>
+
+    <section class="scope-note">
+        <strong>Repository scan scope</strong>
+        <p>This mode analyzes source and deployment configuration. It does not inspect a running host. Live runtime observations can be entered through the manual scan form or supplied through the REST API.</p>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

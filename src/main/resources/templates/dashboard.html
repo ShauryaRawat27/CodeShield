@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Dashboard')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('dashboard')}"></nav>
+
+<main class="page-shell">
+    <div class="flash" th:if="${message}" th:text="${message}"></div>
+
+    <section class="hero">
+        <div>
+            <span class="eyebrow">SECURITY DRIFT ANALYSIS</span>
+            <h1>Application security drift overview</h1>
+            <p>CodeShield compares registered baselines with repository or runtime evidence and records each detected mismatch.</p>
+            <div class="hero-actions">
+                <a class="button primary" th:href="@{/scans/repository}">Scan a repository</a>
+                <a class="button secondary" th:href="@{/scans/new}">Enter runtime evidence</a>
+            </div>
+        </div>
+        <div class="hero-visual" aria-label="CodeShield analysis flow">
+            <div class="flow-source">
+                <span>Application intent</span>
+                <strong>Expected state</strong>
+                <small>Approved configuration</small>
+            </div>
+            <div class="flow-connector">⇄</div>
+            <div class="flow-engine">
+                <span>Correlation engine</span>
+                <strong>6 drift rules</strong>
+                <small>Evidence linked · explainable</small>
+            </div>
+            <div class="flow-connector">⇄</div>
+            <div class="flow-source danger">
+                <span>Runtime reality</span>
+                <strong>Observed state</strong>
+                <small>Detected configuration</small>
+            </div>
+        </div>
+    </section>
+
+    <section class="stat-grid">
+        <article class="stat-card">
+            <span>Applications</span>
+            <strong th:text="${stats.assets}">0</strong>
+            <small>registered baselines</small>
+        </article>
+        <article class="stat-card">
+            <span>Completed scans</span>
+            <strong th:text="${stats.scans}">0</strong>
+            <small>evidence comparisons</small>
+        </article>
+        <article class="stat-card">
+            <span>Open findings</span>
+            <strong th:text="${stats.openFindings}">0</strong>
+            <small>awaiting review</small>
+        </article>
+        <article class="stat-card critical-card">
+            <span>Critical findings</span>
+            <strong th:text="${stats.criticalFindings}">0</strong>
+            <small>highest priority</small>
+        </article>
+    </section>
+
+    <section class="two-column">
+        <article class="panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="eyebrow">PRIORITIZED</span>
+                    <h2>Recent findings</h2>
+                </div>
+                <a th:href="@{/findings}">View all</a>
+            </div>
+            <div class="empty-state" th:if="${#lists.isEmpty(recentFindings)}">No findings have been created yet.</div>
+            <div class="finding-list" th:unless="${#lists.isEmpty(recentFindings)}">
+                <a class="finding-row" th:each="finding : ${recentFindings}" th:href="@{/findings/{id}(id=${finding.id})}">
+                    <span class="severity-dot" th:classappend="${#strings.toLowerCase(finding.severity.name())}"></span>
+                    <span class="finding-main">
+                        <strong th:text="${finding.title}">Finding title</strong>
+                        <small th:text="${finding.asset.name + ' · ' + finding.ruleId}">Asset · Rule</small>
+                    </span>
+                    <span class="score" th:text="${finding.riskScore}">92</span>
+                </a>
+            </div>
+        </article>
+
+        <article class="panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="eyebrow">ACTIVITY</span>
+                    <h2>Latest scans</h2>
+                </div>
+                <a th:href="@{/scans}">History</a>
+            </div>
+            <div class="scan-list">
+                <div class="scan-row" th:each="scan : ${recentScans}">
+                    <span class="scan-icon">✓</span>
+                    <span>
+                        <strong th:text="${scan.asset.name}">Application</strong>
+                        <small th:text="${#temporals.format(scan.completedAt, 'dd MMM yyyy, HH:mm')}">Date</small>
+                    </span>
+                    <span class="finding-count" th:text="${scan.findingsCount} + ' findings'">6 findings</span>
+                </div>
+            </div>
+            <div class="quick-actions">
+                <a th:href="@{/scans/repository}" class="quick-action">
+                    <strong>Repository scan</strong>
+                    <span>Analyze an existing local codebase</span>
+                </a>
+                <a th:href="@{/scans/new}" class="quick-action">
+                    <strong>Manual evidence</strong>
+                    <span>Compare supplied runtime observations</span>
+                </a>
+            </div>
+        </article>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

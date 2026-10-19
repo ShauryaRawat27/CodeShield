@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Not Found')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav('')}"></nav>
+<main class="page-shell narrow-shell">
+    <section class="empty-page panel">
+        <span class="eyebrow">404</span>
+        <h1>That record could not be found</h1>
+        <p th:text="${message}">The requested item does not exist.</p>
+        <a class="button primary" th:href="@{/}">Return to dashboard</a>
+    </section>
+</main>
+</body>
+</html>

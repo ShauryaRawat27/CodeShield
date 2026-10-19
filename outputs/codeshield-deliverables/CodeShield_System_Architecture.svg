@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
+  <title id="title">CodeShield system architecture</title>
+  <desc id="desc">Runtime-aware SecOps architecture correlating application intent with Docker, VM, operating-system, network, dependency and vulnerability evidence.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fafb"/>
+      <stop offset="1" stop-color="#edf4f5"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#173f4f"/>
+      <stop offset="1" stop-color="#0f6470"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="140%">
+      <feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#173f4f" flood-opacity="0.13"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4d6a74"/>
+    </marker>
+    <marker id="arrow-accent" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#0f7682"/>
+    </marker>
+    <style>
+      .title{font:700 36px 'Aptos Display','Segoe UI',sans-serif;fill:#173f4f}
+      .subtitle{font:400 17px 'Aptos','Segoe UI',sans-serif;fill:#596970}
+      .lane{font:700 13px 'Aptos','Segoe UI',sans-serif;letter-spacing:1.8px;fill:#0f6470}
+      .node-title{font:700 18px 'Aptos Display','Segoe UI',sans-serif;fill:#173f4f}
+      .node-title-light{font:700 20px 'Aptos Display','Segoe UI',sans-serif;fill:#ffffff}
+      .node-text{font:400 14px 'Aptos','Segoe UI',sans-serif;fill:#40545c}
+      .node-text-light{font:400 14px 'Aptos','Segoe UI',sans-serif;fill:#e9f5f6}
+      .tiny{font:600 12px 'Aptos','Segoe UI',sans-serif;fill:#0f6470}
+      .tiny-light{font:600 12px 'Aptos','Segoe UI',sans-serif;fill:#bce8e7}
+      .box{fill:#ffffff;stroke:#cad9dd;stroke-width:1.4;rx:16;filter:url(#shadow)}
+      .soft{fill:#e7f1f2;stroke:#b9d0d4;stroke-width:1.4;rx:16}
+      .accent{fill:#e6f5f4;stroke:#76b7b6;stroke-width:1.6;rx:16}
+      .corebox{fill:url(#core);stroke:#0b5862;stroke-width:1.5;rx:20;filter:url(#shadow)}
+      .store{fill:#fff9e8;stroke:#dacb93;stroke-width:1.4;rx:16}
+      .line{fill:none;stroke:#4d6a74;stroke-width:2;marker-end:url(#arrow)}
+      .bus{fill:none;stroke:#4d6a74;stroke-width:2}
+      .accent-line{fill:none;stroke:#0f7682;stroke-width:2.5;marker-end:url(#arrow-accent)}
+      .dash{fill:none;stroke:#99adb4;stroke-width:1.5;stroke-dasharray:7 7;rx:22}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1040" fill="url(#bg)"/>
+  <text x="70" y="65" class="title">CodeShield — Runtime-Aware Security Drift Analyzer</text>
+  <text x="70" y="96" class="subtitle">Spring Boot control plane • read-only collectors • application intent ↔ runtime reality correlation</text>
+
+  <text x="70" y="140" class="lane">1  EVIDENCE SOURCES</text>
+  <rect x="60" y="154" width="1480" height="160" class="dash"/>
+
+  <rect x="88" y="176" width="315" height="112" class="box"/>
+  <text x="112" y="207" class="node-title">Application &amp; CI evidence</text>
+  <text x="112" y="234" class="node-text">Git repository • pom.xml / Gradle</text>
+  <text x="112" y="258" class="node-text">Dockerfile • YAML / properties • SBOM</text>
+
+  <rect x="433" y="176" width="315" height="112" class="box"/>
+  <text x="457" y="207" class="node-title">Docker runtime</text>
+  <text x="457" y="234" class="node-text">Engine API • images • containers</text>
+  <text x="457" y="258" class="node-text">networks • mounts • capabilities • ports</text>
+
+  <rect x="778" y="176" width="315" height="112" class="box"/>
+  <text x="802" y="207" class="node-title">VM / host agents</text>
+  <text x="802" y="234" class="node-text">OS • kernel • packages • services</text>
+  <text x="802" y="258" class="node-text">processes • firewall • listening sockets</text>
+
+  <rect x="1123" y="176" width="389" height="112" class="box"/>
+  <text x="1147" y="207" class="node-title">Security intelligence</text>
+  <text x="1147" y="234" class="node-text">OSV / NVD • CISA KEV • vendor advisories</text>
+  <text x="1147" y="258" class="node-text">CVSS • exploit evidence • package mappings</text>
+
+  <path d="M245 288 V332 M590 288 V332 M935 288 V332 M1318 288 V332 M245 332 H1318" class="bus"/>
+  <path d="M1216 332 V365" class="line"/>
+
+  <text x="70" y="346" class="lane">2  CONTROL PLANE &amp; COLLECTION</text>
+  <rect x="82" y="365" width="280" height="122" class="soft"/>
+  <text x="106" y="397" class="node-title">REST API &amp; access control</text>
+  <text x="106" y="425" class="node-text">Spring Security • RBAC • audit trail</text>
+  <text x="106" y="450" class="node-text">scan requests • asset ownership</text>
+
+  <rect x="392" y="365" width="280" height="122" class="soft"/>
+  <text x="416" y="397" class="node-title">Scan orchestrator</text>
+  <text x="416" y="425" class="node-text">scheduler • job lifecycle • retries</text>
+  <text x="416" y="450" class="node-text">rate limits • agent health</text>
+
+  <rect x="702" y="365" width="188" height="122" class="soft"/>
+  <text x="726" y="397" class="node-title">Job queue</text>
+  <text x="726" y="425" class="node-text">async scans</text>
+  <text x="726" y="450" class="node-text">back-pressure</text>
+
+  <rect x="920" y="365" width="592" height="122" class="box"/>
+  <text x="944" y="397" class="node-title">Collector &amp; analyzer workers</text>
+  <text x="944" y="425" class="node-text">Source Intent Analyzer  •  Docker Analyzer  •  VM / OS Analyzer</text>
+  <text x="944" y="450" class="node-text">Network Exposure Analyzer  •  Dependency / CVE Enricher</text>
+
+  <path d="M362 426 H392" class="accent-line"/>
+  <path d="M672 426 H702" class="accent-line"/>
+  <path d="M890 426 H920" class="accent-line"/>
+
+  <path d="M1216 487 V536" class="line"/>
+  <text x="70" y="542" class="lane">3  NORMALIZED SECURITY MODELS</text>
+
+  <rect x="88" y="562" width="365" height="132" class="accent"/>
+  <text x="112" y="596" class="node-title">Application Intent Model</text>
+  <text x="112" y="625" class="node-text">required runtime • declared dependencies</text>
+  <text x="112" y="650" class="node-text">expected ports • internal / external services</text>
+  <text x="112" y="675" class="node-text">configuration and deployment intent</text>
+
+  <rect x="1147" y="562" width="365" height="132" class="accent"/>
+  <text x="1171" y="596" class="node-title">Runtime Reality Model</text>
+  <text x="1171" y="625" class="node-text">observed versions • running packages</text>
+  <text x="1171" y="650" class="node-text">reachability • privileges • mounts • exposure</text>
+  <text x="1171" y="675" class="node-text">host, container and network evidence</text>
+
+  <rect x="515" y="542" width="570" height="172" class="corebox"/>
+  <text x="800" y="582" text-anchor="middle" class="node-title-light">Correlation &amp; Drift Engine</text>
+  <text x="800" y="614" text-anchor="middle" class="node-text-light">declared dependency ≠ deployed dependency</text>
+  <text x="800" y="640" text-anchor="middle" class="node-text-light">expected private service ≠ publicly reachable port</text>
+  <text x="800" y="666" text-anchor="middle" class="node-text-light">required runtime ≠ observed runtime • policy ≠ configuration</text>
+  <text x="800" y="694" text-anchor="middle" class="tiny-light">evidence-linked comparison with explainable mismatch rules</text>
+
+  <path d="M453 628 H515" class="accent-line"/>
+  <path d="M1147 628 H1085" class="accent-line"/>
+
+  <text x="70" y="762" class="lane">4  RISK, PERSISTENCE &amp; RESPONSE</text>
+  <rect x="88" y="782" width="410" height="132" class="corebox"/>
+  <text x="293" y="818" text-anchor="middle" class="node-title-light">Context-Aware Risk Engine</text>
+  <text x="293" y="850" text-anchor="middle" class="node-text-light">severity + exposure + asset criticality</text>
+  <text x="293" y="876" text-anchor="middle" class="node-text-light">+ runtime mismatch + exploitability / reachability</text>
+
+  <rect x="546" y="782" width="310" height="132" class="store"/>
+  <text x="570" y="818" class="node-title">PostgreSQL</text>
+  <text x="570" y="848" class="node-text">assets • scans • findings • scores</text>
+  <text x="570" y="874" class="node-text">policies • remediation state</text>
+
+  <rect x="888" y="782" width="278" height="132" class="store"/>
+  <text x="912" y="818" class="node-title">Evidence store</text>
+  <text x="912" y="848" class="node-text">raw snapshots • SBOMs</text>
+  <text x="912" y="874" class="node-text">logs • hashes • provenance</text>
+
+  <rect x="1198" y="782" width="314" height="132" class="box"/>
+  <text x="1222" y="818" class="node-title">Findings &amp; response</text>
+  <text x="1222" y="848" class="node-text">dashboard / API • reports • alerts</text>
+  <text x="1222" y="874" class="node-text">assignment • exception • re-scan</text>
+
+  <path d="M800 714 V748 H293 V782" class="accent-line"/>
+  <path d="M498 848 H546" class="line"/>
+  <path d="M856 848 H888" class="line"/>
+  <path d="M1166 848 H1198" class="accent-line"/>
+
+  <rect x="88" y="946" width="1424" height="54" rx="14" fill="#dcebed"/>
+  <text x="800" y="979" text-anchor="middle" class="node-text">Security boundary: no central SSH • mTLS agent communication • read-only Docker access • least privilege • secrets isolation • complete audit logging</text>
+</svg>
